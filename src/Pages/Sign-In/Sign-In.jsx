@@ -29,7 +29,7 @@ export default function SignIn() {
         token: data.data.token,
       });
       localStorage.setItem("pitchau", JSONauth);
-      navigate("/sign-up");
+      navigate("/");
     } catch (error) {
       console.log(error);
       setError({

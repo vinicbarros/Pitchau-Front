@@ -41,7 +41,7 @@ export default function SignUp() {
         email: userSignUp.email,
         password: userSignUp.password,
       });
-      navigate("/");
+      navigate("/sign-in");
     } catch (error) {
       setError({
         isError: true,
@@ -52,7 +52,7 @@ export default function SignUp() {
 
   function handleSignUp(e) {
     let value = e.target.value;
-    setUserSignUp({ ...formVal, [e.target.name]: value });
+    setUserSignUp({ ...userSignUp, [e.target.name]: value });
   }
 
   return (
@@ -97,7 +97,7 @@ export default function SignUp() {
             placeholder="Confirm your password"
             required
           />
-
+          {error.isError ? <h5>{error.message}</h5> : <></>}
           <Button type="submit">
             <BiExit />
             Sign Up

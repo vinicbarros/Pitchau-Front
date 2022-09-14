@@ -25,13 +25,13 @@ export default function SignIn() {
         email: userLogin.email,
         password: userLogin.password,
       });
-      setUser(data.data);
       const JSONauth = JSON.stringify({
         token: data.data.token,
       });
       localStorage.setItem("pitchau", JSONauth);
-      navigate("/home");
+      navigate("/sign-up");
     } catch (error) {
+      console.log(error);
       setError({
         isError: true,
         message: error.response.data.message,

@@ -35,7 +35,7 @@ export default function Products() {
               key={index}
               img={item.img}
               nameProduct={item.nameProduct}
-              price={item.price / 100}
+              price={(item.price / 100).toFixed(2)}
             />
           ))
         )}
@@ -45,7 +45,7 @@ export default function Products() {
 }
 
 const ProductListBox = styled.div`
-  font-family: "Raleway";
+  font-family: "Poppins";
   margin-top: 90px;
   padding-top: 40px;
   display: flex;

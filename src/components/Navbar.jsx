@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
 import { useContext, useEffect } from "react";
 import { getCartUser } from "../services/Pitchau";
-import UserContext from "../context/userContext";
+import UserContext from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {

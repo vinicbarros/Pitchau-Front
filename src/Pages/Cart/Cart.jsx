@@ -2,7 +2,7 @@ import styled from "styled-components";
 import CartProductList from "../../components/CartProductList";
 import Navbar from "../../components/Navbar";
 import { useContext } from "react";
-import UserContext from "../../context/userContext";
+import UserContext from "../../contexts/UserContext";
 
 export default function Cart() {
   const { setUserCartList, userCartList } = useContext(UserContext);

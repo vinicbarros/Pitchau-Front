@@ -4,33 +4,34 @@ import SignUp from "./Pages/Sign-Up/Sign-Up";
 import Products from "./components/Products";
 import GlobalStyle from "./style/GlobalStyle";
 import PrivatePage from "./components/PrivatePage";
-import FiltredCategory from './Pages/FiltredCategory/FiltredCategory';
+import FiltredCategory from "./Pages/FiltredCategory/FiltredCategory";
 import PreCart from "./Pages/PreCart/PreCart";
-import UserContext from "./context/userContext";
+import UserContext from "./contexts/UserContext";
 import { useState } from "react";
 import Cart from "./Pages/Cart/Cart";
-import CheckOut from './Pages/CheckOut/CheckOut';
+import CheckOut from "./Pages/CheckOut/CheckOut";
 
 function App() {
   const [userCartList, setUserCartList] = useState([]);
   const [clicked, setClicked] = useState(true);
-	const [productsList, setProductsList] = useState('');
-	const [productsFiltred, setProductsFiltred] = useState('');
+  const [productsList, setProductsList] = useState("");
+  const [productsFiltred, setProductsFiltred] = useState("");
+
   return (
     <>
       <GlobalStyle />
-      			<UserContext.Provider
-				value={{
-					clicked,
-					setClicked,
-					productsList,
-					setProductsList,
-					productsFiltred,
-					setProductsFiltred,
-          userCartList, 
-          setUserCartList
-				}}
-			>
+      <UserContext.Provider
+        value={{
+          clicked,
+          setClicked,
+          productsList,
+          setProductsList,
+          productsFiltred,
+          setProductsFiltred,
+          userCartList,
+          setUserCartList,
+        }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/sign-in" element={<SignIn />} />
@@ -59,8 +60,8 @@ function App() {
                 </PrivatePage>
               }
             />
-            <Route path='/products/:category' element={<FiltredCategory />} />
-						<Route path='/checkout' element={<CheckOut />} />
+            <Route path="/products/:category" element={<FiltredCategory />} />
+            <Route path="/checkout" element={<CheckOut />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

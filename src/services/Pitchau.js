@@ -24,9 +24,18 @@ async function postSignIn(login) {
 }
 
 async function getProducts() {
-  const config = createHeaders();
-  const promise = await axios.get(`${BASE_URL}/products`, config);
-  return promise;
+	const config = createHeaders();
+	const promise = await axios.get(`${BASE_URL}/products`, config);
+	return promise;
+}
+
+async function getProductsFiltred(string) {
+	const config = createHeaders();
+	const promise = await axios.get(
+		`${BASE_URL}/products?category=${string}`,
+		config
+	);
+	return promise;
 }
 
 async function postCart(id) {
@@ -41,4 +50,4 @@ async function getCartUser() {
   return promise;
 }
 
-export { postSignIn, postSignUp, getProducts, postCart, getCartUser };
+export { postSignIn, postSignUp, getProducts, postCart, getCartUser, getProductsFiltred };

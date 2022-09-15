@@ -60,6 +60,14 @@ const Form = styled.form`
     margin-top: 40px;
     margin-bottom: 40px;
   }
+
+  h5 {
+    color: rgb(239, 99, 50);
+    text-decoration: underline;
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
 `;
 
 const Button = styled.button`

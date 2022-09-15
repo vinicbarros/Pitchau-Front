@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
-export default function Product({ index, img, nameProduct }) {
+export default function Product({ index, img, nameProduct, price }) {
 	return (
 		<>
 			<Informations>
 				<img src={img} alt='' />
-				<ProductName>{nameProduct}</ProductName>
-				<ProductPrice>R$ 9999,99</ProductPrice>
+				<TextInformations>
+					<ProductName>{nameProduct}</ProductName>
+					<ProductPrice>R$ {price}</ProductPrice>
+				</TextInformations>
+
 				<ProductComprar>
 					<img
 						src='https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/07/%C3%8Dcone-Carrinho-de-Compras-PNG.png'
@@ -20,7 +23,7 @@ export default function Product({ index, img, nameProduct }) {
 }
 
 const Informations = styled.div`
-	width: 300px;
+	width: 250px;
 	height: 400px;
 	border-radius: 5px;
 	background-color: white;
@@ -29,16 +32,17 @@ const Informations = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
-
+	gap: 30px;
+	position: relative;
 	img {
-		width: 200px;
+		width: 150px;
 	}
 `;
 const ProductName = styled.div`
-	font-size: 20px;
+	font-family: 'Raleway';
+	font-size: 14px;
 	font-weight: 700;
-	color: darkgray;
+	color: black;
 
 	img {
 		width: 200px;
@@ -46,13 +50,14 @@ const ProductName = styled.div`
 `;
 
 const ProductPrice = styled.div`
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: 700;
 	color: rgb(227, 82, 20);
 `;
 
 const ProductComprar = styled.div`
-	width: 250px;
+	font-family: 'Raleway';
+	width: 220px;
 	height: 50px;
 	font-size: 15px;
 	font-weight: 700;
@@ -63,8 +68,18 @@ const ProductComprar = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
+	position: absolute;
+	bottom: 20px;
 
 	img {
 		width: 25px;
 	}
+`;
+
+const TextInformations = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 220px;
+	height: 50px;
 `;

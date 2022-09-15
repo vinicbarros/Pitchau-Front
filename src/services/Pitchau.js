@@ -28,4 +28,9 @@ async function getProducts() {
 	return promise;
 }
 
-export { postSignIn, postSignUp, getProducts };
+async function getProductsFiltred(string) {
+	const promise = await axios.get(`${BASE_URL}/products?category=${string}`);
+	return promise;
+}
+
+export { postSignIn, postSignUp, getProducts, getProductsFiltred };

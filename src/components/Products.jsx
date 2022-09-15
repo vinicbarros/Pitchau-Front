@@ -1,4 +1,4 @@
-import { getProducts, getProductsFiltred } from '../services/Pitchau';
+import { getProducts } from '../services/Pitchau';
 import Navbar from './Navbar';
 import styled from 'styled-components';
 import Product from './Product';
@@ -6,6 +6,7 @@ import Categorys from '../Pages/Sign-Up/Catergorys';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import UserContext from '../../src/contexts/UserContext';
+import { useAsyncValue } from 'react-router-dom';
 
 export default function Products() {
 	const { productsList, setProductsList } = useContext(UserContext);
@@ -14,7 +15,7 @@ export default function Products() {
 		async function fetchData() {
 			try {
 				const productsList2 = await getProducts();
-				setProductsList(productsList2.data);
+				setProductsList(productsList2.data.products);
 			} catch (error) {
 				console.log(error);
 			}
@@ -31,14 +32,22 @@ export default function Products() {
 				{productsList.length === 0 ? (
 					<h1>carregando</h1>
 				) : (
-					productsList.map((item, index) => (
-						<Product
-							key={index}
-							img={item.img}
-							nameProduct={item.nameProduct}
-							price={item.price}
-						/>
-					))
+					productsList.map((item, index) => {
+						const estoque = productsList.filter(
+							(value) => value.nameProduct === item.nameProduct
+						);
+
+						console.log(estoque.length);
+						return (
+							<Product
+								key={index}
+								img={item.img}
+								nameProduct={item.nameProduct}
+								price={item.price}
+								estoque={estoque.length}
+							/>
+						);
+					})
 				)}
 			</ProductListBox>
 		</SiteContent>

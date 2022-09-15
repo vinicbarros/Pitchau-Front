@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-export default function Product({ index, img, nameProduct, price }) {
+export default function Product({ index, img, nameProduct, price, estoque }) {
 	return (
 		<>
 			<Informations>
@@ -10,6 +10,7 @@ export default function Product({ index, img, nameProduct, price }) {
 				<TextInformations>
 					<ProductName>{nameProduct}</ProductName>
 					<ProductPrice>R$ {price}</ProductPrice>
+					<InStock>Em estoque ({estoque})</InStock>
 				</TextInformations>
 
 				<ProductComprar>
@@ -53,6 +54,22 @@ const ProductPrice = styled.div`
 	font-size: 20px;
 	font-weight: 700;
 	color: rgb(227, 82, 20);
+`;
+const InStock = styled.div`
+	height: 18px;
+	width: 100px;
+	position: absolute;
+	bottom: 85px;
+	right: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	font-weight: 700;
+	color: rgb(26, 170, 69);
+	border-radius: 5px;
+	font-family: 'Raleway';
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
 `;
 
 const ProductComprar = styled.div`

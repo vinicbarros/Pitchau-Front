@@ -6,10 +6,12 @@ import { useEffect } from 'react';
 import { getProductsFiltred } from '../../services/Pitchau';
 import Product from '../../components/Product';
 import styled from 'styled-components';
+import Categorys from '../Sign-Up/Catergorys';
 
 export default function FiltredCategory() {
 	const { category } = useParams();
-	const { productsFiltred, setProductsFiltred } = useContext(UserContext);
+	const { productsFiltred, setProductsFiltred, clicked } =
+		useContext(UserContext);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -23,12 +25,13 @@ export default function FiltredCategory() {
 			}
 		}
 		fetchData();
-	}, []);
+	}, [clicked]);
 
 	return (
 		<>
 			<SiteContent>
 				<Navbar />
+				<Categorys />
 				<ProductListBox>
 					{productsFiltred.length === 0 ? (
 						<h1>carregando</h1>
@@ -39,6 +42,7 @@ export default function FiltredCategory() {
 								img={item.img}
 								nameProduct={item.nameProduct}
 								price={item.price}
+								estoque={productsFiltred.length}
 							/>
 						))
 					)}

@@ -6,6 +6,7 @@ import FiltredCategory from './Pages/FiltredCategory/FiltredCategory';
 import GlobalStyle from './style/GlobalStyle';
 import UserContext from '../src/contexts/UserContext';
 import { useState } from 'react';
+import CheckOut from './Pages/CheckOut/CheckOut';
 
 function App() {
 	const [clicked, setClicked] = useState(true);
@@ -30,6 +31,7 @@ function App() {
 						<Route path='/sign-up' element={<SignUp />} />
 						<Route path='/' element={<Products />} />
 						<Route path='/products/:category' element={<FiltredCategory />} />
+						<Route path='/checkout' element={<CheckOut />} />
 					</Routes>
 				</BrowserRouter>
 			</UserContext.Provider>

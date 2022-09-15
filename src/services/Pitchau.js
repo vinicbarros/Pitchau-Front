@@ -24,12 +24,17 @@ async function postSignIn(login) {
 }
 
 async function getProducts() {
-	const promise = await axios.get(`${BASE_URL}/products`);
+	const config = createHeaders();
+	const promise = await axios.get(`${BASE_URL}/products`, config);
 	return promise;
 }
 
 async function getProductsFiltred(string) {
-	const promise = await axios.get(`${BASE_URL}/products?category=${string}`);
+	const config = createHeaders();
+	const promise = await axios.get(
+		`${BASE_URL}/products?category=${string}`,
+		config
+	);
 	return promise;
 }
 

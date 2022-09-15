@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Navbar from "../../components/Navbar";
+import { postSignUp } from "../../services/Pitchau";
 import { Form, Container, Button } from "../../common/Formstyle";
 import { BiExit } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { postSignUp } from "../../services/Pitchau";
 
 export default function SignUp() {
   const [userSignUp, setUserSignUp] = useState({
@@ -34,7 +34,6 @@ export default function SignUp() {
       });
       return;
     }
-
     try {
       await postSignUp({
         name: userSignUp.name,
@@ -43,10 +42,7 @@ export default function SignUp() {
       });
       navigate("/sign-in");
     } catch (error) {
-      setError({
-        isError: true,
-        message: error.response.data.message,
-      });
+      console.log(error);
     }
   }
 

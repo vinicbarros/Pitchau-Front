@@ -1,25 +1,42 @@
-import styled from 'styled-components';
-
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { postCart } from "../services/Pitchau";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-export default function Product({ index, img, nameProduct, price, estoque }) {
-	return (
-		<>
-			<Informations>
-				<img src={img} alt='' />
-				<TextInformations>
-					<ProductName>{nameProduct}</ProductName>
-					<ProductPrice>R$ {price}</ProductPrice>
-					<InStock>Em estoque ({estoque})</InStock>
-				</TextInformations>
+export default function Product({ id, img, nameProduct, price, estoque }) {
+  const navigate = useNavigate();
+  async function sendToCart(id) {
+    try {
+      const cart = await postCart({ productId: id });
+      navigate("/precart", { replace: false, state: cart.data.product });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-				<ProductComprar>
-					<AiOutlineShoppingCart color='white' size={25} />
-					COMPRAR
-				</ProductComprar>
-			</Informations>
-		</>
-	);
+  return (
+    <>
+      <Informations>
+        <img src={img} alt="" />
+        <TextInformations>
+          <ProductName>{nameProduct}</ProductName>
+          <ProductPrice>R$ {price}</ProductPrice>
+          <InStock>Em estoque ({estoque})</InStock>
+        </TextInformations>
+        <ProductComprar
+          onClick={() => {
+            sendToCart(id);
+          }}
+        >
+          <img
+            src="https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/07/%C3%8Dcone-Carrinho-de-Compras-PNG.png"
+            alt=""
+          />
+          COMPRAR
+        </ProductComprar>
+      </Informations>
+    </>
+  );
 }
 
 const Informations = styled.div`
@@ -45,15 +62,15 @@ const ProductName = styled.div`
 	font-weight: 700;
 	color: black;
 
-	img {
-		width: 200px;
-	}
+  img {
+    width: 200px;
+  }
 `;
 
 const ProductPrice = styled.div`
-	font-size: 20px;
-	font-weight: 700;
-	color: rgb(227, 82, 20);
+  font-size: 30px;
+  font-weight: 700;
+  color: rgb(227, 82, 20);
 `;
 const InStock = styled.div`
 	height: 18px;

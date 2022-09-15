@@ -1,26 +1,26 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = "http://localhost:5000";
 
 function createHeaders() {
-	const auth = JSON.parse(localStorage.getItem('pitchau'));
-	const config = {
-		headers: {
-			Authorization: `Bearer ${auth.token}`,
-		},
-	};
+  const auth = JSON.parse(localStorage.getItem("pitchau"));
+  const config = {
+    headers: {
+      Authorization: `Bearer ${auth.token}`,
+    },
+  };
 
-	return config;
+  return config;
 }
 
 async function postSignUp(signUp) {
-	const promise = await axios.post(`${BASE_URL}/sign-up`, signUp);
-	return promise;
+  const promise = await axios.post(`${BASE_URL}/sign-up`, signUp);
+  return promise;
 }
 
 async function postSignIn(login) {
-	const promise = await axios.post(`${BASE_URL}/sign-in`, login);
-	return promise;
+  const promise = await axios.post(`${BASE_URL}/sign-in`, login);
+  return promise;
 }
 
 async function getProducts() {
@@ -38,4 +38,16 @@ async function getProductsFiltred(string) {
 	return promise;
 }
 
-export { postSignIn, postSignUp, getProducts, getProductsFiltred };
+async function postCart(id) {
+  const config = createHeaders();
+  const promise = await axios.post(`${BASE_URL}/cart`, id, config);
+  return promise;
+}
+
+async function getCartUser() {
+  const config = createHeaders();
+  const promise = await axios.get(`${BASE_URL}/cart`, config);
+  return promise;
+}
+
+export { postSignIn, postSignUp, getProducts, postCart, getCartUser, getProductsFiltred };

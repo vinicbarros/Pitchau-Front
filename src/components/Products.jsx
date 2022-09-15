@@ -60,4 +60,5 @@ const SiteContent = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	background-color: rgb(3, 55, 97);
 `;

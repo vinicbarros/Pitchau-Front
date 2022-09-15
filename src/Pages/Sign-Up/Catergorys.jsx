@@ -8,11 +8,14 @@ export default function Categorys() {
 			<Category name='HeadSet' />
 			<Category name='Placas de vídeo' />
 			<Category name='Mouse gamer' />
+			<Category name='Teclado gamer' />
+			<Category name='Gabinetes' />
 		</CategoryBar>
 	);
 }
 
 const CategoryBar = styled.h1`
+	z-index: 101;
 	position: fixed;
 	top: 70px;
 	width: 100vw;

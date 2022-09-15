@@ -58,8 +58,10 @@ const ProductListBox = styled.div`
 
 const SiteContent = styled.div`
 	width: 100vw;
+	height: 100vh;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	flex-direction: column;
 	align-items: center;
+	background-color: rgb(3, 55, 97);
 `;

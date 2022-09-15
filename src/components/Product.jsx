@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+
 export default function Product({ index, img, nameProduct, price }) {
 	return (
 		<>
@@ -11,10 +13,7 @@ export default function Product({ index, img, nameProduct, price }) {
 				</TextInformations>
 
 				<ProductComprar>
-					<img
-						src='https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/07/%C3%8Dcone-Carrinho-de-Compras-PNG.png'
-						alt=''
-					/>
+					<AiOutlineShoppingCart color='white' size={25} />
 					COMPRAR
 				</ProductComprar>
 			</Informations>
@@ -24,16 +23,17 @@ export default function Product({ index, img, nameProduct, price }) {
 
 const Informations = styled.div`
 	width: 250px;
-	height: 400px;
+	height: 310px;
 	border-radius: 5px;
 	background-color: white;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	gap: 30px;
 	position: relative;
+	padding-top: 20px;
 	img {
 		width: 150px;
 	}
@@ -57,7 +57,7 @@ const ProductPrice = styled.div`
 
 const ProductComprar = styled.div`
 	font-family: 'Raleway';
-	width: 220px;
+	width: 200px;
 	height: 50px;
 	font-size: 15px;
 	font-weight: 700;
@@ -70,10 +70,6 @@ const ProductComprar = styled.div`
 	gap: 20px;
 	position: absolute;
 	bottom: 20px;
-
-	img {
-		width: 25px;
-	}
 `;
 
 const TextInformations = styled.div`

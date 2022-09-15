@@ -1,9 +1,17 @@
 import styled from "styled-components";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Navbar() {
   return (
     <ContentHeader>
       <Title>πtchau</Title>
+      <FaShoppingCart
+        style={{
+          marginRight: "32px",
+        }}
+        size="2em"
+        color="rgb(107,158,208)"
+      />
     </ContentHeader>
   );
 }
@@ -19,6 +27,7 @@ const ContentHeader = styled.header`
   height: 70px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: rgb(0, 96, 177);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 `;

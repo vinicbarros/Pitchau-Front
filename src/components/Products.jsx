@@ -1,11 +1,12 @@
-import { getProducts, getProductsFiltred } from '../services/Pitchau';
+import { getProducts } from '../services/Pitchau';
 import Navbar from './Navbar';
 import styled from 'styled-components';
 import Product from './Product';
 import Categorys from '../Pages/Sign-Up/Catergorys';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import UserContext from '../../src/contexts/UserContext';
+import UserContext from '../contexts/UserContext';
+import { useAsyncValue } from 'react-router-dom';
 
 export default function Products() {
 	const { productsList, setProductsList } = useContext(UserContext);
@@ -14,7 +15,7 @@ export default function Products() {
 		async function fetchData() {
 			try {
 				const productsList2 = await getProducts();
-				setProductsList(productsList2.data);
+				setProductsList(productsList2.data.products);
 			} catch (error) {
 				console.log(error);
 			}
@@ -26,28 +27,37 @@ export default function Products() {
 		<SiteContent>
 			<Navbar />
 			<Categorys />
-
-			<ProductListBox>
-				{productsList.length === 0 ? (
-					<h1>carregando</h1>
-				) : (
-					productsList.map((item, index) => (
-						<Product
-							key={index}
-							img={item.img}
-							nameProduct={item.nameProduct}
-							price={item.price}
-						/>
-					))
-				)}
-			</ProductListBox>
+			<ProductsWrap>
+				<WrapTitle>
+					<h1>PRODUTOS</h1>
+				</WrapTitle>
+				<ProductListBox>
+					{productsList.length === 0 ? (
+						<h1>carregando</h1>
+					) : (
+						productsList.map((item, index) => {
+							const estoque = productsList.filter(
+								(value) => value.nameProduct === item.nameProduct
+							);
+							return (
+								<Product
+									id={item._id}
+									key={index}
+									img={item.img}
+									nameProduct={item.nameProduct}
+									price={(item.price / 100).toFixed(2)}
+									estoque={estoque.length}
+								/>
+							);
+						})
+					)}
+				</ProductListBox>
+			</ProductsWrap>
 		</SiteContent>
 	);
 }
 
 const ProductListBox = styled.div`
-	width: 80vw;
-	margin-top: 150px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
@@ -55,10 +65,29 @@ const ProductListBox = styled.div`
 `;
 
 const SiteContent = styled.div`
+	font-family: 'Poppins';
 	width: 100vw;
+	height: 100vh;
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgb(3, 55, 97);
+`;
+
+const ProductsWrap = styled.section`
+	margin-top: 200px;
+`;
+
+const WrapTitle = styled.div`
+	height: 66px;
+	border-radius: 2px;
+	background-color: #ff6500;
+	display: flex;
+	align-items: center;
+
+	h1 {
+		font-size: 20px;
+		color: #ffffff;
+		font-weight: bold;
+		margin-left: 20px;
+	}
 `;

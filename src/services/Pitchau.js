@@ -1,36 +1,84 @@
-import axios from 'axios';
-
-const BASE_URL = 'http://localhost:5000';
+import axios from "axios";
 
 function createHeaders() {
-	const auth = JSON.parse(localStorage.getItem('pitchau'));
-	const config = {
-		headers: {
-			Authorization: `Bearer ${auth.token}`,
-		},
-	};
+  const auth = JSON.parse(localStorage.getItem("pitchau"));
+  const config = {
+    headers: {
+      Authorization: `Bearer ${auth.token}`,
+    },
+  };
 
-	return config;
+  return config;
 }
 
 async function postSignUp(signUp) {
-	const promise = await axios.post(`${BASE_URL}/sign-up`, signUp);
-	return promise;
+  const promise = await axios.post(
+    `${process.env.REACT_APP_API_BASE_URL}/sign-up`,
+    signUp
+  );
+  return promise;
 }
 
 async function postSignIn(login) {
-	const promise = await axios.post(`${BASE_URL}/sign-in`, login);
-	return promise;
+  const promise = await axios.post(
+    `${process.env.REACT_APP_API_BASE_URL}/sign-in`,
+    login
+  );
+  return promise;
 }
 
 async function getProducts() {
-	const promise = await axios.get(`${BASE_URL}/products`);
-	return promise;
+  const config = createHeaders();
+  const promise = await axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/products`,
+    config
+  );
+  return promise;
 }
 
 async function getProductsFiltred(string) {
-	const promise = await axios.get(`${BASE_URL}/products?category=${string}`);
-	return promise;
+  const config = createHeaders();
+  const promise = await axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/products?category=${string}`,
+    config
+  );
+  return promise;
 }
 
-export { postSignIn, postSignUp, getProducts, getProductsFiltred };
+async function postCart(id) {
+  const config = createHeaders();
+  const promise = await axios.post(
+    `${process.env.REACT_APP_API_BASE_URL}/cart`,
+    id,
+    config
+  );
+  return promise;
+}
+
+async function getCartUser() {
+  const config = createHeaders();
+  const promise = await axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/cart`,
+    config
+  );
+  return promise;
+}
+
+async function deleteItemUserCart(id) {
+  const config = createHeaders();
+  const promise = await axios.delete(
+    `${process.env.REACT_APP_API_BASE_URL}/cart/${id}`,
+    config
+  );
+  return promise;
+}
+
+export {
+  postSignIn,
+  postSignUp,
+  getProducts,
+  postCart,
+  getCartUser,
+  getProductsFiltred,
+  deleteItemUserCart,
+};

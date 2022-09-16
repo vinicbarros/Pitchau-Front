@@ -61,60 +61,42 @@ export default function CheckOut() {
 								<ClientData>
 									<h1>Dados do Cartão:</h1>
 									<input
-										//autoComplete="off"
 										type='text'
-										//name="name"
-										//value={userSignUp.name}
-										//onChange={handleSignUp}
-										placeholder='Número do Cartão'
-										required
+										//value={name}
+										//onChange={(e) => setName(e.target.value)}
+										placeholder='Número do cartão'
 									/>
 									<input
-										// autoComplete="off"
 										type='Validade'
-										//name='Validade'
 										//value={userSignUp.email}
 										// onChange={handleSignUp}
 										placeholder='Validade'
-										// required
 									/>
 									<input
-										// autoComplete="off"
 										type='email'
-										//name='Código de segurança'
 										//value={userSignUp.email}
 										// onChange={handleSignUp}
 										placeholder='Código de segurança'
-										// required
 									/>
 									<h1>Endereço de entrega:</h1>
 
 									<input
-										//autoComplete="off"
 										type='text'
-										//name="name"
 										//value={userSignUp.name}
 										//onChange={handleSignUp}
 										placeholder='Rua/Avanida/Travessa'
-										required
 									/>
 									<input
-										// autoComplete="off"
 										type='Validade'
-										//name='Validade'
 										//value={userSignUp.email}
 										// onChange={handleSignUp}
 										placeholder='Número'
-										// required
 									/>
 									<input
-										// autoComplete="off"
 										type='email'
-										//name='Código de segurança'
 										//value={userSignUp.email}
 										// onChange={handleSignUp}
 										placeholder='Cep'
-										// required
 									/>
 								</ClientData>
 								<Parcelas>

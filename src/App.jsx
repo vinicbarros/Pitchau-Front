@@ -60,8 +60,22 @@ function App() {
                 </PrivatePage>
               }
             />
-            <Route path="/products/:category" element={<FiltredCategory />} />
-            <Route path="/checkout" element={<CheckOut />} />
+            <Route
+              path="/products/:category"
+              element={
+                <PrivatePage>
+                  <FiltredCategory />
+                </PrivatePage>
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <PrivatePage>
+                  <CheckOut />
+                </PrivatePage>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

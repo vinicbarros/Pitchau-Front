@@ -46,6 +46,7 @@ export default function FiltredCategory() {
           ) : (
             productsFiltred.map((item, index) => (
               <Product
+                id={item._id}
                 key={index}
                 img={item.img}
                 nameProduct={item.nameProduct}

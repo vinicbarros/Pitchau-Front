@@ -32,10 +32,10 @@ export default function SignIn() {
       navigate("/");
     } catch (error) {
       console.log(error);
-      setError({
+      /* setError({
         isError: true,
         message: error.response.data.message,
-      });
+      }); */
     }
   }
 

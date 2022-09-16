@@ -42,7 +42,6 @@ export default function SignUp() {
       });
       navigate("/sign-in");
     } catch (error) {
-      console.log(error.data);
       setError({
         isError: true,
         message: error.response.data.message,

@@ -23,13 +23,11 @@ export default function PreCart() {
             </Box>
             <PriceBox>
               <Box3>
-                <h3>12x de {(priceProd / 2 + priceProd).toFixed(2)} </h3>
-                <h3>
-                  À prazo: {(12 * (priceProd / 2 + priceProd)).toFixed(2)} R$
-                </h3>
+                <h3>12x de {((priceProd * 1.35) / 12).toFixed(2)} R$ </h3>
+                <h3>À prazo: {(priceProd * 1.35).toFixed(2)} R$</h3>
               </Box3>
               <Box2>
-                <h3>R$ {price / 100} </h3>
+                <h3>R$ {((price * 0.9) / 100).toFixed(2)} </h3>
                 <h3>(À vista no PIX)</h3>
               </Box2>
             </PriceBox>

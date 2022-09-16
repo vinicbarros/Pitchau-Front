@@ -6,6 +6,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 export default function PreCart() {
   const { state } = useLocation();
   const { name, price, description, img } = state;
+  let priceProd = price / 100;
 
   return (
     <>
@@ -20,10 +21,18 @@ export default function PreCart() {
                 <h4>{name}</h4>
               </Wrap>
             </Box>
-            <Box2>
-              <h3>R$ {price / 100} </h3>
-              <h3>(À vista no PIX)</h3>
-            </Box2>
+            <PriceBox>
+              <Box3>
+                <h3>12x de {(priceProd / 2 + priceProd).toFixed(2)} </h3>
+                <h3>
+                  À prazo: {(12 * (priceProd / 2 + priceProd)).toFixed(2)} R$
+                </h3>
+              </Box3>
+              <Box2>
+                <h3>R$ {price / 100} </h3>
+                <h3>(À vista no PIX)</h3>
+              </Box2>
+            </PriceBox>
           </Product>
           <Product2>
             <div>
@@ -34,9 +43,11 @@ export default function PreCart() {
               <Link to="/">
                 <Button cor="branco">CONTINUAR COMPRANDO</Button>
               </Link>
-              <Button cor="laranja" margin="sim">
-                IR PARA O CARRINHO
-              </Button>
+              <Link to="/cart">
+                <Button cor="laranja" margin="sim">
+                  IR PARA O CARRINHO
+                </Button>
+              </Link>
             </Wrap2>
           </Product2>
         </Wrapper>
@@ -93,6 +104,10 @@ const Product2 = styled.div`
   }
 `;
 
+const PriceBox = styled.div`
+  display: flex;
+`;
+
 const Box = styled.div`
   display: flex;
   margin-left: 30px;
@@ -114,6 +129,23 @@ const Box2 = styled.div`
     font-size: 18px;
     text-align: end;
     margin-right: 36px;
+    margin-left: 16px;
+  }
+`;
+
+const Box3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-right: 1px solid #565c69;
+
+  h3 {
+    font-weight: bold;
+    color: #565c69;
+    font-size: 18px;
+    text-align: end;
+    margin-right: 14px;
   }
 `;
 
@@ -150,3 +182,4 @@ const Button = styled.button`
     props.cor === "laranja" ? "#FF6500" : "#ffffff"};
   color: ${(props) => (props.cor === "laranja" ? "#ffffff" : "#FF6500")};
 `;
+export { Button };

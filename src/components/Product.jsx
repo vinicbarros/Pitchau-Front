@@ -2,12 +2,17 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { postCart } from "../services/Pitchau";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { TailSpin } from "react-loader-spinner";
+import { useState } from "react";
 
 export default function Product({ id, img, nameProduct, price, estoque }) {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   async function sendToCart(id) {
     try {
+      setLoading(!loading);
       const cart = await postCart({ productId: id });
+      setLoading(!loading);
       navigate("/precart", { replace: false, state: cart.data.product });
     } catch (error) {
       console.log(error);
@@ -28,8 +33,14 @@ export default function Product({ id, img, nameProduct, price, estoque }) {
             sendToCart(id);
           }}
         >
-          <AiOutlineShoppingCart color="white" size={25} />
-          COMPRAR
+          {loading ? (
+            <TailSpin color="#ffffff" width="10" />
+          ) : (
+            <>
+              <AiOutlineShoppingCart color="white" size={25} />
+              COMPRAR
+            </>
+          )}
         </ProductComprar>
       </Informations>
     </>
@@ -41,7 +52,8 @@ const Informations = styled.div`
   height: 310px;
   border-radius: 5px;
   background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -101,12 +113,17 @@ const ProductComprar = styled.div`
   gap: 20px;
   position: absolute;
   bottom: 20px;
+
+  &:hover {
+    background-color: rgb(192, 69, 16);
+    transition: 1s;
+  }
 `;
 
 const TextInformations = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 12px;
   width: 220px;
   height: 50px;
 `;

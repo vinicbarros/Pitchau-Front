@@ -14,13 +14,23 @@ export default function Categorys() {
   );
 }
 
-const CategoryBar = styled.h1`
+const CategoryBar = styled.div`
   z-index: 101;
   position: fixed;
-  top: 100px;
+  top: 96px;
   width: 100vw;
-  height: 30px;
+  height: 34px;
   display: flex;
   justify-content: center;
   gap: 2px;
+  background-color: rgb(225, 101, 0);
+
+  div + div {
+    border-left: 0.007em solid rgb(255, 139, 31);
+  }
+
+  div:hover {
+    background-color: #e35214;
+    transition: 1s;
+  }
 `;

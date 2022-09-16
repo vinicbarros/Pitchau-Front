@@ -42,7 +42,11 @@ export default function SignUp() {
       });
       navigate("/sign-in");
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
+      setError({
+        isError: true,
+        message: error.response.data.message,
+      });
     }
   }
 
@@ -53,17 +57,16 @@ export default function SignUp() {
 
   return (
     <>
-      <Navbar />
       <Container>
         <SignUpForm onSubmit={handleForm}>
-          <h2>SIGN UP</h2>
+          <h2>CRIAR CONTA</h2>
           <input
             autoComplete="off"
             type="text"
             name="name"
             value={userSignUp.name}
             onChange={handleSignUp}
-            placeholder="Name"
+            placeholder="Nome"
             required
           />
           <input
@@ -81,7 +84,7 @@ export default function SignUp() {
             name="password"
             value={userSignUp.password}
             onChange={handleSignUp}
-            placeholder="Password"
+            placeholder="Senha"
             required
           />
           <input
@@ -90,18 +93,18 @@ export default function SignUp() {
             name="confirm"
             value={userSignUp.confirm}
             onChange={handleSignUp}
-            placeholder="Confirm your password"
+            placeholder="Confirme sua senha"
             required
           />
           {error.isError ? <h5>{error.message}</h5> : <></>}
           <Button type="submit">
             <BiExit />
-            Sign Up
+            Cadastrar
           </Button>
         </SignUpForm>
         <Link to="/sign-in">
           <a>
-            Already have an account? <strong>Sign In!</strong>
+            Já possui uma conta? <strong>Entrar!</strong>
           </a>
         </Link>
       </Container>

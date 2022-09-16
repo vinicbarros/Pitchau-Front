@@ -5,10 +5,10 @@ import { ImExit } from "react-icons/im";
 import { useContext, useEffect } from "react";
 import { getCartUser } from "../services/Pitchau";
 import UserContext from "../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-  const { setUserCartList, userCartList } = useContext(UserContext);
+  const { setUserCartList, userCartList, clicked } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,11 +21,13 @@ export default function Navbar() {
       }
     }
     fetchData();
-  }, []);
+  }, [clicked]);
 
   return (
     <ContentHeader>
-      <Title>πtchau</Title>
+      <Link to="/">
+        <Title>πtchau</Title>
+      </Link>
       <InputBox>
         <SearchBar placeholder="Busque aqui"></SearchBar>
         <div>
@@ -55,7 +57,6 @@ export default function Navbar() {
 }
 
 const ContentHeader = styled.header`
-  border-bottom: solid 4px rgb(227, 82, 20);
   position: fixed;
   z-index: 100;
   top: 0;
@@ -68,6 +69,10 @@ const ContentHeader = styled.header`
   justify-content: space-between;
   background-color: rgb(0, 96, 177);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Title = styled.h1`

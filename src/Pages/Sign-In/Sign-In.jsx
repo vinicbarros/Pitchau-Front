@@ -46,10 +46,9 @@ export default function SignIn() {
 
   return (
     <>
-      <Navbar />
       <Container>
         <Form onSubmit={handleForm}>
-          <h2>SIGN IN</h2>
+          <h2>ENTRAR</h2>
           <input
             autoComplete="off"
             type="email"
@@ -65,18 +64,18 @@ export default function SignIn() {
             name="password"
             value={userLogin.password}
             onChange={handleSignIn}
-            placeholder="Password"
+            placeholder="Senha"
             required
           />
           {error.isError ? <h5>{error.message}</h5> : <></>}
           <Button type="submit">
             <BiExit />
-            Sign In
+            Entrar
           </Button>
         </Form>
         <Link to="/sign-up">
           <a>
-            New in πtchau? <strong>Sign up!</strong>
+            Novo na πtchau? <strong>Cadastre-se!</strong>
           </a>
         </Link>
       </Container>

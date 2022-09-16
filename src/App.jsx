@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./Pages/Sign-In/Sign-In";
 import SignUp from "./Pages/Sign-Up/Sign-Up";
-import Products from "./components/Products";
+import Products from "./Pages/Products/Products";
 import GlobalStyle from "./style/GlobalStyle";
 import PrivatePage from "./components/PrivatePage";
 import FiltredCategory from "./Pages/FiltredCategory/FiltredCategory";

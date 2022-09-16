@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Category from "../../components/Category";
+import Category from "./Category";
 
 export default function Categorys() {
   return (

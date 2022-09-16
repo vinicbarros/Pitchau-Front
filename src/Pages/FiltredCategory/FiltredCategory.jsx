@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { getProductsFiltred } from "../../services/Pitchau";
 import Product from "../../components/Product";
 import styled from "styled-components";
-import Categorys from "../Sign-Up/Catergorys";
+import Categorys from "../../components/Catergorys";
 import Loading from "../../components/Loading";
 
 export default function FiltredCategory() {
@@ -33,6 +33,13 @@ export default function FiltredCategory() {
       <SiteContent>
         <Navbar />
         <Categorys />
+        {productsFiltred.length === 0 ? (
+          <></>
+        ) : (
+          <WrapTitle>
+            <h1>PRODUTOS</h1>
+          </WrapTitle>
+        )}
         <ProductListBox>
           {productsFiltred.length === 0 ? (
             <Loading />
@@ -42,7 +49,7 @@ export default function FiltredCategory() {
                 key={index}
                 img={item.img}
                 nameProduct={item.nameProduct}
-                price={item.price}
+                price={item.price / 100}
                 estoque={productsFiltred.length}
               />
             ))
@@ -53,6 +60,7 @@ export default function FiltredCategory() {
   );
 }
 const ProductListBox = styled.div`
+  font-family: "Poppins";
   width: 80vw;
   margin-top: 150px;
   display: flex;
@@ -68,4 +76,19 @@ const SiteContent = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+`;
+
+const WrapTitle = styled.div`
+  height: 66px;
+  border-radius: 2px;
+  background-color: #ff6500;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 20px;
+  }
 `;

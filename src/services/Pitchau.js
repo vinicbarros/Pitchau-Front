@@ -15,7 +15,7 @@ function createHeaders() {
 
 async function postSignUp(signUp) {
   const promise = await axios.post(
-    `${process.env.REACT_APP_API_BASE_URL}/sign-up`,
+    `${import.meta.env.VITE_API_BASE_URL}/sign-up`,
     signUp
   );
   return promise;
@@ -23,7 +23,7 @@ async function postSignUp(signUp) {
 
 async function postSignIn(login) {
   const promise = await axios.post(
-    `${process.env.REACT_APP_API_BASE_URL}/sign-in`,
+    `${import.meta.env.VITE_API_BASE_URL}/sign-in`,
     login
   );
   return promise;
@@ -32,7 +32,7 @@ async function postSignIn(login) {
 async function getProducts() {
   const config = createHeaders();
   const promise = await axios.get(
-    `${process.env.REACT_APP_API_BASE_URL}/products`,
+    `${import.meta.env.VITE_API_BASE_URL}/products`,
     config
   );
   return promise;
@@ -41,7 +41,7 @@ async function getProducts() {
 async function getProductsFiltred(string) {
   const config = createHeaders();
   const promise = await axios.get(
-    `${process.env.REACT_APP_API_BASE_URL}/products?category=${string}`,
+    `${import.meta.env.VITE_API_BASE_URL}/products?category=${string}`,
     config
   );
   return promise;
@@ -50,7 +50,7 @@ async function getProductsFiltred(string) {
 async function postCart(id) {
   const config = createHeaders();
   const promise = await axios.post(
-    `${process.env.REACT_APP_API_BASE_URL}/cart`,
+    `${import.meta.env.VITE_API_BASE_URL}/cart`,
     id,
     config
   );
@@ -60,7 +60,7 @@ async function postCart(id) {
 async function getCartUser() {
   const config = createHeaders();
   const promise = await axios.get(
-    `${process.env.REACT_APP_API_BASE_URL}/cart`,
+    `${import.meta.env.VITE_API_BASE_URL}/cart`,
     config
   );
   return promise;
@@ -69,7 +69,7 @@ async function getCartUser() {
 async function deleteItemUserCart(id) {
   const config = createHeaders();
   const promise = await axios.delete(
-    `${process.env.REACT_APP_API_BASE_URL}/cart/${id}`,
+    `${import.meta.env.VITE_API_BASE_URL}/cart/${id}`,
     config
   );
   return promise;

@@ -5,6 +5,7 @@ import { Form, Container, Button } from "../../common/Formstyle";
 import { BiExit } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 export default function SignUp() {
   const [userSignUp, setUserSignUp] = useState({
@@ -13,6 +14,7 @@ export default function SignUp() {
     password: "",
     confirm: "",
   });
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState({
     isError: false,
     message: "",
@@ -35,6 +37,7 @@ export default function SignUp() {
       return;
     }
     try {
+      setLoading(!loading);
       await postSignUp({
         name: userSignUp.name,
         email: userSignUp.email,
@@ -42,6 +45,7 @@ export default function SignUp() {
       });
       navigate("/sign-in");
     } catch (error) {
+      setLoading(!loading);
       setError({
         isError: true,
         message: error.response.data.message,
@@ -96,9 +100,20 @@ export default function SignUp() {
             required
           />
           {error.isError ? <h5>{error.message}</h5> : <></>}
-          <Button type="submit">
-            <BiExit />
-            Cadastrar
+          <Button
+            type="submit"
+            onClick={() => {
+              setLoading(!loading);
+            }}
+          >
+            {loading ? (
+              <TailSpin color="#ffffff" width="10" />
+            ) : (
+              <>
+                <BiExit />
+                Cadastrar
+              </>
+            )}
           </Button>
         </SignUpForm>
         <Link to="/sign-in">

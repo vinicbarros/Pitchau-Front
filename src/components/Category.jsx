@@ -21,6 +21,7 @@ export default function Category({ name }) {
 }
 
 const CategoryHeader = styled.div`
+  cursor: pointer;
   z-index: 110;
   font-family: "Poppins";
   width: 10vw;

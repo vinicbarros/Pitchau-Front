@@ -23,6 +23,11 @@ export default function Navbar() {
     fetchData();
   }, [clicked]);
 
+  function exitUser() {
+    localStorage.removeItem("pitchau");
+    navigate("/sign-in");
+  }
+
   return (
     <ContentHeader>
       <Link to="/">
@@ -45,8 +50,10 @@ export default function Navbar() {
           {userCartList.length === 0 ? <></> : <div>{userCartList.length}</div>}
         </CartBox>
         <ImExit
+          onClick={exitUser}
           style={{
             marginLeft: "30px",
+            cursor: "pointer",
           }}
           size="1.5em"
           color="rgb(107,158,208)"

@@ -192,6 +192,7 @@ export default function CheckOut() {
 									{arrayParcelas.map((parcela, key) => (
 										<PriceParcelas
 											index={key}
+											key={key}
 											total={total / 100}
 											frase={parcela.frase}
 											math={parcela.math}

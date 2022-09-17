@@ -28,6 +28,7 @@ export default function FiltredCategory() {
 		fetchData();
 	}, [clicked]);
 
+<<<<<<< HEAD
 	return (
 		<>
 			<SiteContent>
@@ -59,6 +60,39 @@ export default function FiltredCategory() {
 			</SiteContent>
 		</>
 	);
+=======
+  return (
+    <>
+      <SiteContent>
+        <Navbar />
+        <Categorys />
+        {productsFiltred.length === 0 ? (
+          <></>
+        ) : (
+          <WrapTitle>
+            <h1>PRODUTOS</h1>
+          </WrapTitle>
+        )}
+        <ProductListBox>
+          {productsFiltred.length === 0 ? (
+            <Loading />
+          ) : (
+            productsFiltred.map((item, index) => (
+              <Product
+                id={item._id}
+                key={index}
+                img={item.img}
+                nameProduct={item.nameProduct}
+                price={item.price / 100}
+                estoque={productsFiltred.length}
+              />
+            ))
+          )}
+        </ProductListBox>
+      </SiteContent>
+    </>
+  );
+>>>>>>> de7022658362b541afb4c14129a4701794b49df7
 }
 const ProductListBox = styled.div`
 	font-family: 'Poppins';

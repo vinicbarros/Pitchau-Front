@@ -74,7 +74,14 @@ function App() {
 								</PrivatePage>
 							}
 						/>
-						<Route path='/products/:category' element={<FiltredCategory />} />
+						<Route
+							path='/products/:category'
+							element={
+								<PrivatePage>
+									<FiltredCategory />
+								</PrivatePage>
+							}
+						/>
 						<Route
 							path='/checkout'
 							element={

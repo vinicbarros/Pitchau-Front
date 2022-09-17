@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 import { deleteItemUserCart } from "../services/Pitchau";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../contexts/UserContext";
+import { TailSpin } from "react-loader-spinner";
 
 export default function CartProductList({
   id,
@@ -11,13 +12,16 @@ export default function CartProductList({
   nameProduct,
   price,
 }) {
+  const [loading, setLoading] = useState(false);
   const { setClicked, clicked } = useContext(UserContext);
   async function deleteItemFromCart(id) {
     console.log(id);
     try {
+      setLoading(!loading);
       const deleted = await deleteItemUserCart(id);
-      setClicked(!clicked);
+      setLoading(!loading);
     } catch (error) {
+      setLoading(!loading);
       console.log(error);
     }
   }
@@ -49,10 +53,11 @@ export default function CartProductList({
         </ProductBox>
         <DeleteItemCart
           onClick={() => {
+            setLoading(!loading);
             deleteItemFromCart(id);
           }}
         >
-          Remover
+          {loading ? <TailSpin color="#ffffff" width="10" /> : <>Remover</>}
         </DeleteItemCart>
       </InfoProduct>
     </BoxProduct>

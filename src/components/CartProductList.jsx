@@ -20,6 +20,7 @@ export default function CartProductList({
       setLoading(!loading);
       const deleted = await deleteItemUserCart(id);
       setLoading(!loading);
+      setClicked(!clicked);
     } catch (error) {
       setLoading(!loading);
       console.log(error);
@@ -44,10 +45,12 @@ export default function CartProductList({
           </StarBox>
           <PriceBox>
             <h3>
-              <strong>{(price * 0.9).toFixed(2)}</strong> à vista no PIX
+              <strong>{(price * 0.9).toFixed(2).replace(".", ",")}</strong> à
+              vista no PIX
             </h3>
             <p>
-              <span>{price.toFixed(2)}</span> em até 6x sem juros
+              <span>{price.toFixed(2).replace(".", ",")}</span> em até 6x sem
+              juros
             </p>
           </PriceBox>
         </ProductBox>

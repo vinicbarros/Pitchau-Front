@@ -15,7 +15,8 @@ export default function Products() {
     async function fetchData() {
       try {
         const productsList2 = await getProducts();
-        setProductsList(productsList2.data.products);
+        let sorterList = productsList2.data.products.sort(sorter);
+        setProductsList(sorterList);
       } catch (error) {
         console.log(error);
       }
@@ -44,7 +45,7 @@ export default function Products() {
           {productsList.length === 0 ? (
             <Loading />
           ) : (
-            productsList.sort(sorter).map((item, index) => {
+            productsList.map((item, index) => {
               const estoque = productsList.filter(
                 (value) => value.nameProduct === item.nameProduct
               );
@@ -54,7 +55,7 @@ export default function Products() {
                   key={index}
                   img={item.img}
                   nameProduct={item.nameProduct}
-                  price={(item.price / 100).toFixed(2)}
+                  price={(item.price / 100).toFixed(2).replace(".", ",")}
                   estoque={estoque.length}
                 />
               );

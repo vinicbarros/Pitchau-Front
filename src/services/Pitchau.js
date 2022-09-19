@@ -75,6 +75,16 @@ async function deleteItemUserCart(id) {
   return promise;
 }
 
+async function finishBuy(info) {
+  const config = createHeaders();
+  const promise = await axios.post(
+    `${import.meta.env.VITE_API_BASE_URL}/checkout`,
+    info,
+    config
+  );
+  return promise;
+}
+
 export {
   postSignIn,
   postSignUp,
@@ -83,4 +93,5 @@ export {
   getCartUser,
   getProductsFiltred,
   deleteItemUserCart,
+  finishBuy,
 };

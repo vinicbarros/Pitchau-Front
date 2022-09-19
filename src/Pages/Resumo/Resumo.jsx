@@ -3,9 +3,11 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import CartProduct from "../../components/CartProduct";
 import { BsPatchCheck } from "react-icons/bs";
+import { Button } from "../PreCart/PreCart";
+import { Link } from "react-router-dom";
 
 export default function Resumo() {
-  const { userCartList } = useContext(UserContext);
+  const { userCartList, address } = useContext(UserContext);
 
   return (
     <>
@@ -20,8 +22,10 @@ export default function Resumo() {
             cadastrado abaixo:
           </h1>
           <Endereco>
-            <p>Endereço: Rua das boninas, Número: 106</p>
-            <p>CEP: 13405-071</p>
+            <h3>ENDEREÇO:</h3>
+            <p>
+              {address.address}, {address.number}, {address.CEP}
+            </p>
           </Endereco>
           <ResumoCompra>
             <p>Resumo do pedido: </p>
@@ -37,77 +41,83 @@ export default function Resumo() {
               />
             ))}
           </ResumoCompra>
+          <Link to="/">
+            <Button cor="laranja">VOLTAR PARA A HOME</Button>
+          </Link>
         </Mensagem>
       </SiteContent>
     </>
   );
 }
 const SiteContent = styled.div`
-  gap: 40px;
-  width: 100vw;
-  height: 100vh;
+  font-family: "Poppins";
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
 `;
 
 const Header = styled.div`
-  gap: 10px;
-  color: rgb(2, 153, 5);
-  font-size: 30px;
-  width: 100vw;
-  height: 250px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: "Poppins";
-  position: fixed;
-  top: 0;
-  background-color: white;
-  z-index: 100;
+  h1 {
+    margin-top: 35px;
+    color: #42464d;
+    font-weight: bold;
+    font-size: 40px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+  }
+  margin-bottom: 35px;
 `;
 
 const Mensagem = styled.div`
-  margin-top: 600px;
-  width: 700px;
-  height: 500px;
   font-size: 20px;
   font-weight: 700;
-  font-family: "Poppins";
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 150px;
 `;
 const Endereco = styled.div`
-  padding-left: 50px;
   margin-top: 30px;
   width: 400px;
   height: 30px;
   font-size: 16px;
   font-weight: 700;
-  font-family: "Poppins";
   text-align: left;
+
+  h3 {
+    color: #ff6500;
+    text-align: center;
+    font-size: 32px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+  }
+
+  p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+  }
 `;
 const ResumoCompra = styled.div`
-  margin-top: 10px;
-  margin-top: 30px;
-  width: 400px;
-  height: 100vh;
+  margin-top: 50px;
   font-size: 16px;
   font-weight: 700;
-  font-family: "Poppins";
   text-align: left;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 40px;
 
   p {
-    margin-bottom: 10px;
+    margin-top: 30px;
+    color: #ff6500;
+    text-align: center;
+    font-size: 32px;
+    border-bottom: 1px solid rgb(230, 230, 230);
   }
 `;

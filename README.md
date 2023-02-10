@@ -47,7 +47,7 @@ The following tools and frameworks were used in the construction of the project:
 npm i
 ```
 
-3. Populate `.env` file with variable `VITE_BASE_URL`, this url should point to your API server (divideai-back)
+3. Populate `.env` file with variable `VITE_BASE_URL`, this url should point to your API server (Pitchau-Back)
 
 4. Run the back-end in a development environment:
 
